@@ -17,7 +17,7 @@ const EditLivestockForm = () => {
   });
 
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_URL}/api/livestock')
+    fetch(`${import.meta.env.VITE_API_URL}/api/livestock`)
       .then(res => res.json())
       .then(data => {
         const animalToEdit = data.find(a => a.assetId === parseInt(id));

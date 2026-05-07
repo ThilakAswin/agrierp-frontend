@@ -22,10 +22,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch('${import.meta.env.VITE_API_URL}/api/dashboard/summary').then(res => res.json()),
-      fetch('${import.meta.env.VITE_API_URL}/api/livestock').then(res => res.json()),
-      fetch('${import.meta.env.VITE_API_URL}/api/crops').then(res => res.json()),
-      fetch('${import.meta.env.VITE_API_URL}/api/dashboard/tasks').then(res => res.json())
+      fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/summary`).then(res => res.json()),
+      fetch(`${import.meta.env.VITE_API_URL}/api/livestock`).then(res => res.json()),
+      fetch(`${import.meta.env.VITE_API_URL}/api/crops`).then(res => res.json()),
+      fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/tasks`).then(res => res.json())
     ]).then(([summary, livestock, crops, tasks]) => {
       const livestockMap = livestock.reduce((acc, curr) => { acc[curr.species] = (acc[curr.species] || 0) + curr.headCount; return acc; }, {});
       const processedLivestock = Object.keys(livestockMap).map(key => ({ name: key, count: livestockMap[key] }));

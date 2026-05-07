@@ -16,7 +16,7 @@ const EditZoneForm = () => {
 
   // 2. Fetch existing data and map it to the state
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_URL}/api/zones')
+    fetch(`${import.meta.env.VITE_API_URL}/api/zones`)
       .then(res => res.json())
       .then(data => {
         // Find the specific zone by ID

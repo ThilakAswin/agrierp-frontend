@@ -10,7 +10,7 @@ const ZoneList = () => {
   const [selectedZone, setSelectedZone] = useState(null);
 
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_URL}/api/zones')
+    fetch(`${import.meta.env.VITE_API_URL}/api/zones`)
       .then(res => res.json())
       .then(data => {
         setZones(data);

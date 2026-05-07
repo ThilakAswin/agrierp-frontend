@@ -19,7 +19,7 @@ const AddCropForm = () => {
   });
 
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_URL}/api/zones')
+    fetch(`${import.meta.env.VITE_API_URL}/api/zones`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch zones');
         return res.json();
@@ -64,7 +64,7 @@ const AddCropForm = () => {
       }
     };
 
-    fetch('${import.meta.env.VITE_API_URL}/api/crops', {
+    fetch(`${import.meta.env.VITE_API_URL}/api/crops`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

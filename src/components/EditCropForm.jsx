@@ -18,7 +18,7 @@ const EditCropForm = () => {
   });
 
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_URL}/api/crops')
+    fetch(`${import.meta.env.VITE_API_URL}/api/crops`)
       .then(res => res.json())
       .then(data => {
         const cropToEdit = data.find(c => c.assetId === parseInt(id));

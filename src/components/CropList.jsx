@@ -21,7 +21,7 @@ const CropList = () => {
   });
 
   const fetchCrops = () => {
-    fetch('${import.meta.env.VITE_API_URL}/api/crops')
+    fetch(`${import.meta.env.VITE_API_URL}/api/crops`)
       .then(response => response.json())
       .then(data => {
         setCrops(data);

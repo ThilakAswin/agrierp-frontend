@@ -20,7 +20,7 @@ const LivestockList = () => {
   });
 
   const fetchLivestock = () => {
-    fetch('${import.meta.env.VITE_API_URL}/api/livestock')
+    fetch(`${import.meta.env.VITE_API_URL}/api/livestock`)
       .then(response => response.json())
       .then(data => {
         setLivestock(data);
