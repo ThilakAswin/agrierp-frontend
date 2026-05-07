@@ -26,8 +26,12 @@ function App() {
             
             {/* Logo/Brand */}
             <div className="flex items-center gap-2">
-              <span className="text-2xl">🌿</span>
-              <h1 className="text-xl font-bold tracking-wide">Agri-ERP System</h1>
+<img 
+  src="/logo.png" 
+  alt="Green Archive Logo" 
+  className="w-9 h-9 bg-white rounded-full p-1 shadow-sm" 
+/>
+              <h1 className="text-xl font-bold tracking-wide">Green Archive</h1>
             </div>
 
             {/* Navigation Links */}
