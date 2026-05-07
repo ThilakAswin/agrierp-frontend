@@ -23,7 +23,7 @@ const AddZoneForm = () => {
       sizeAcres: parseFloat(formData.sizeAcres)
     };
 
-    fetch('http://localhost:8080/api/zones', {
+    fetch('${import.meta.env.VITE_API_URL}/api/zones', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

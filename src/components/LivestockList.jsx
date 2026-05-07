@@ -20,7 +20,7 @@ const LivestockList = () => {
   });
 
   const fetchLivestock = () => {
-    fetch('http://localhost:8080/api/livestock')
+    fetch('${import.meta.env.VITE_API_URL}/api/livestock')
       .then(response => response.json())
       .then(data => {
         setLivestock(data);
@@ -62,7 +62,7 @@ const LivestockList = () => {
       ...(newStatus === 'SOLD' && { totalRevenue: parseFloat(revenue) || 0 })
     };
 
-    fetch(`http://localhost:8080/api/livestock/${assetId}/split-status`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/livestock/${assetId}/split-status`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -93,7 +93,7 @@ const LivestockList = () => {
 
   const confirmDelete = () => {
     if (!selectedAnimal) return;
-    fetch(`http://localhost:8080/api/livestock/${selectedAnimal.assetId}`, { method: 'DELETE' })
+    fetch(`${import.meta.env.VITE_API_URL}/api/livestock/${selectedAnimal.assetId}`, { method: 'DELETE' })
     .then(response => {
       if (response.ok) {
         toast.success('Record deleted successfully!');

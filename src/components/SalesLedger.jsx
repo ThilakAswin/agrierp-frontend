@@ -8,8 +8,8 @@ const SalesLedger = () => {
   useEffect(() => {
     // Fetch both Crops and Livestock to find the ones that made money
     Promise.all([
-      fetch('http://localhost:8080/api/crops').then(res => res.json()),
-      fetch('http://localhost:8080/api/livestock').then(res => res.json())
+      fetch('${import.meta.env.VITE_API_URL}/api/crops').then(res => res.json()),
+      fetch('${import.meta.env.VITE_API_URL}/api/livestock').then(res => res.json())
     ])
     .then(([crops, livestock]) => {
       

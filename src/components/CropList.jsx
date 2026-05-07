@@ -21,7 +21,7 @@ const CropList = () => {
   });
 
   const fetchCrops = () => {
-    fetch('http://localhost:8080/api/crops')
+    fetch('${import.meta.env.VITE_API_URL}/api/crops')
       .then(response => response.json())
       .then(data => {
         setCrops(data);
@@ -66,7 +66,7 @@ const CropList = () => {
       })
     };
 
-    fetch(`http://localhost:8080/api/crops/${assetId}/split-status`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/crops/${assetId}/split-status`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -96,7 +96,7 @@ const CropList = () => {
 
   const confirmDelete = () => {
     if (!selectedCrop) return;
-    fetch(`http://localhost:8080/api/crops/${selectedCrop.assetId}`, { method: 'DELETE' })
+    fetch(`${import.meta.env.VITE_API_URL}/api/crops/${selectedCrop.assetId}`, { method: 'DELETE' })
     .then(response => {
       if (response.ok) {
         toast.success('Asset deleted successfully!');

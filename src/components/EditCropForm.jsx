@@ -18,7 +18,7 @@ const EditCropForm = () => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/crops')
+    fetch('${import.meta.env.VITE_API_URL}/api/crops')
       .then(res => res.json())
       .then(data => {
         const cropToEdit = data.find(c => c.assetId === parseInt(id));
@@ -54,7 +54,7 @@ const EditCropForm = () => {
       expectedHarvestDate: formData.expectedHarvestDate || null
     };
 
-    fetch(`http://localhost:8080/api/crops/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/crops/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

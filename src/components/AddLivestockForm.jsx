@@ -18,7 +18,7 @@ const AddLivestockForm = () => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/zones')
+    fetch('${import.meta.env.VITE_API_URL}/api/zones')
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch zones');
         return res.json();
@@ -65,7 +65,7 @@ const AddLivestockForm = () => {
       }
     };
 
-    fetch('http://localhost:8080/api/livestock', {
+    fetch('${import.meta.env.VITE_API_URL}/api/livestock', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

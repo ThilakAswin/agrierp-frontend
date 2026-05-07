@@ -10,7 +10,7 @@ const ZoneList = () => {
   const [selectedZone, setSelectedZone] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/zones')
+    fetch('${import.meta.env.VITE_API_URL}/api/zones')
       .then(res => res.json())
       .then(data => {
         setZones(data);
@@ -28,7 +28,7 @@ const ZoneList = () => {
   };
 
   const confirmDelete = () => {
-    fetch(`http://localhost:8080/api/zones/${selectedZone.zoneId}`, { method: 'DELETE' })
+    fetch(`${import.meta.env.VITE_API_URL}/api/zones/${selectedZone.zoneId}`, { method: 'DELETE' })
       .then(res => {
         if (res.ok) {
           toast.success('Land zone removed!');

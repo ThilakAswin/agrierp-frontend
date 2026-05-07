@@ -16,7 +16,7 @@ const EditZoneForm = () => {
 
   // 2. Fetch existing data and map it to the state
   useEffect(() => {
-    fetch('http://localhost:8080/api/zones')
+    fetch('${import.meta.env.VITE_API_URL}/api/zones')
       .then(res => res.json())
       .then(data => {
         // Find the specific zone by ID
@@ -45,7 +45,7 @@ const EditZoneForm = () => {
       sizeAcres: parseFloat(formData.sizeAcres)
     };
 
-    fetch(`http://localhost:8080/api/zones/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/zones/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

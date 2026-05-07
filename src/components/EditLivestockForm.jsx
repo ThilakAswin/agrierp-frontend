@@ -17,7 +17,7 @@ const EditLivestockForm = () => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/livestock')
+    fetch('${import.meta.env.VITE_API_URL}/api/livestock')
       .then(res => res.json())
       .then(data => {
         const animalToEdit = data.find(a => a.assetId === parseInt(id));
@@ -55,7 +55,7 @@ const EditLivestockForm = () => {
       lastVaccinationDate: formData.lastVaccinationDate || null
     };
 
-    fetch(`http://localhost:8080/api/livestock/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/livestock/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

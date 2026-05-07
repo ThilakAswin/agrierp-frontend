@@ -22,10 +22,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:8080/api/dashboard/summary').then(res => res.json()),
-      fetch('http://localhost:8080/api/livestock').then(res => res.json()),
-      fetch('http://localhost:8080/api/crops').then(res => res.json()),
-      fetch('http://localhost:8080/api/dashboard/tasks').then(res => res.json())
+      fetch('${import.meta.env.VITE_API_URL}/api/dashboard/summary').then(res => res.json()),
+      fetch('${import.meta.env.VITE_API_URL}/api/livestock').then(res => res.json()),
+      fetch('${import.meta.env.VITE_API_URL}/api/crops').then(res => res.json()),
+      fetch('${import.meta.env.VITE_API_URL}/api/dashboard/tasks').then(res => res.json())
     ]).then(([summary, livestock, crops, tasks]) => {
       const livestockMap = livestock.reduce((acc, curr) => { acc[curr.species] = (acc[curr.species] || 0) + curr.headCount; return acc; }, {});
       const processedLivestock = Object.keys(livestockMap).map(key => ({ name: key, count: livestockMap[key] }));
@@ -53,7 +53,7 @@ const Dashboard = () => {
 
   // --- NEW: Process the API call with the new money data ---
   const executeCompletion = (taskId, payload) => {
-    fetch(`http://localhost:8080/api/dashboard/tasks/${taskId}/complete`, { 
+    fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/tasks/${taskId}/complete`, { 
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
